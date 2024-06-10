@@ -16,6 +16,13 @@ except FileNotFoundError:
 def load_data():
     df = pd.read_csv('cancer.csv')
     return df
+    
+# Set page configuration
+st.set_page_config(
+    page_title="Lung Cancer Dataset 🫁",
+    layout="centered",
+    page_icon=" 🫁"
+)
 
 # Convert categorical to numeric values
 label_encoders = {}
