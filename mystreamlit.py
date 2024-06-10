@@ -50,6 +50,12 @@ visualization = st.sidebar.selectbox("Choose a visualization:",
 # Display the selected visualization
 if visualization == "Data Table":
     st.write("""
+    By: Rex Ponce
+    """)
+    st.write("""
+    Github: https://github.com/itsmerex/mystreamlitFinal
+    """)
+    st.write("""
     *Data Source*: [Kaggle](https://www.kaggle.com/datasets/jillanisofttech/lung-cancer-detection)  
     Note: '1' indicates 'No' and '2' indicates 'Yes' for categorical values except for Gender that '1' indicates 'Male' and '0' indicates 'Female' and lung cancer that '1' indicates 'Yes' and '0' indicates 'No' .
     """)
