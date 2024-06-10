@@ -8,8 +8,8 @@ from sklearn.preprocessing import LabelEncoder
 # Set page configuration
 st.set_page_config(
     page_title="Lung Cancer Dataset 🫁",
-    layout="centered",
-    page_icon=" 🫁"
+    layout="wide",
+    page_icon="🫁"
 )
 
 # Load data with error handling
@@ -23,7 +23,7 @@ except FileNotFoundError:
 def load_data():
     df = pd.read_csv('cancer.csv')
     return df
-    
+
 # Convert categorical to numeric values
 label_encoders = {}
 for col in df.select_dtypes(include=['object']).columns:
@@ -32,9 +32,6 @@ for col in df.select_dtypes(include=['object']).columns:
 
 # Define a consistent color palette
 color_palette = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6']
-
-# Set page layout to wide for better display
-st.set_page_config(layout="wide")
 
 # App title and description
 st.title('Lung Cancer Data Analysis')
@@ -64,10 +61,10 @@ if visualization == "Data Table":
     """)
     st.write("""
     *Data Source*: [Kaggle](https://www.kaggle.com/datasets/jillanisofttech/lung-cancer-detection)  
-    Note: '1' indicates 'No' and '2' indicates 'Yes' for categorical values except for Gender that '1' indicates 'Male' and '0' indicates 'Female' and lung cancer that '1' indicates 'Yes' and '0' indicates 'No' .
+    Note: '1' indicates 'No' and '2' indicates 'Yes' for categorical values except for Gender that '1' indicates 'Male' and '0' indicates 'Female' and lung cancer that '1' indicates 'Yes' and '0' indicates 'No'.
     """)
     st.dataframe(df)
-   
+
 elif visualization == "Lung Cancer Distribution":
     st.header('Lung Cancer Distribution')
     lung_cancer_counts = df['LUNGCANCER'].value_counts()
@@ -145,13 +142,12 @@ elif visualization == "Pair Plots":
     st.header('Pair Plots')
     sns.pairplot(df, hue='LUNGCANCER', palette=['#3498db', '#e74c3c'])
     st.pyplot(plt)
-    
+
 # Add interactive elements - Slider for age filtering
 age_range = st.sidebar.slider("Select Age Range", min_value=df['AGE'].min(), max_value=df['AGE'].max(),
                               value=(df['AGE'].min(), df['AGE'].max()))
 filtered_data = df[(df['AGE'] >= age_range[0]) & (df['AGE'] <= age_range[1])]
 
-    
 # Narrative and insights
 st.sidebar.title("About the Data")
 st.sidebar.write("""
