@@ -43,8 +43,8 @@ visualization = st.sidebar.selectbox("Choose a visualization:",
                                       "Age vs. Chronic Disease",
                                       "Age Distribution", "Smoking vs. Lung Cancer", 
                                       "Gender Distribution of Lung Cancer", "Gender and Smoking Status",
-                                      "Age Distribution Among Lung Cancer Patients", "Categorical Variables Heatmap",
-                                      "Count of Lung Cancer Cases by Multiple Factors", "Age Distribution Box Plots",
+                                      "Categorical Variables Heatmap",
+                                      "Count of Lung Cancer Cases by Multiple Factors", 
                                       "Interactive Filters", "Pair Plots"])
 
 # Display the selected visualization
@@ -101,13 +101,6 @@ elif visualization == "Gender and Smoking Status":
                   title='Gender and Smoking Status', color_discrete_sequence=color_palette)
     st.plotly_chart(fig7)
 
-elif visualization == "Age Distribution Among Lung Cancer Patients":
-    st.header('Age Distribution Among Lung Cancer Patients')
-    lung_cancer_patients = df[df['LUNGCANCER'] == '1']
-    fig8 = px.histogram(lung_cancer_patients, x='AGE', nbins=20, title='Age Distribution Among Lung Cancer Patients', 
-                        color_discrete_sequence=color_palette)
-    st.plotly_chart(fig8)
-
 elif visualization == "Categorical Variables Heatmap":
     st.header('Heatmap of Categorical Variables')
     st.header('Correlation Heatmap')
@@ -126,12 +119,6 @@ elif visualization == "Count of Lung Cancer Cases by Multiple Factors":
     fig9 = px.bar(factor_counts, x='GENDER', y='counts', color='LUNGCANCER', barmode='group', facet_col='SMOKING',
                   title='Count of Lung Cancer Cases by Gender and Smoking Status', color_discrete_sequence=color_palette)
     st.plotly_chart(fig9)
-
-elif visualization == "Age Distribution Box Plots":
-    st.header('Age Distribution Box Plots')
-    fig10 = px.box(df, x='LUNGCANCER', y='AGE', color='GENDER', title='Age Distribution Box Plots by Lung Cancer and Gender',
-                   color_discrete_sequence=color_palette)
-    st.plotly_chart(fig10)
 
 elif visualization == "Interactive Filters":
     st.header('Interactive Filters')
