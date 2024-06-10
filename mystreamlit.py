@@ -5,6 +5,13 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from sklearn.preprocessing import LabelEncoder
 
+# Set page configuration
+st.set_page_config(
+    page_title="Lung Cancer Dataset 🫁",
+    layout="centered",
+    page_icon=" 🫁"
+)
+
 # Load data with error handling
 try:
     df = pd.read_csv('cancer.csv')
@@ -17,13 +24,6 @@ def load_data():
     df = pd.read_csv('cancer.csv')
     return df
     
-# Set page configuration
-st.set_page_config(
-    page_title="Lung Cancer Dataset 🫁",
-    layout="centered",
-    page_icon=" 🫁"
-)
-
 # Convert categorical to numeric values
 label_encoders = {}
 for col in df.select_dtypes(include=['object']).columns:
